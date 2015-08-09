@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Comments Page</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/comments.css">
+  </head>
+<body>
+    <div class="Title">
+  <h2>Got Somethin' To Say?</h2>
+    </div>
+
+<a href="/"><button style="width:49.5%;">Back to Main Page</button></a>
+<a href=""><button style="width:49.5%;">Want To See The Code?</button></a>
+
+  <form action="/comments" method="post">
+
+  <center>
+
+  <div class="Section">
+    {% if error %}
+      <center><h4>{{ error }}</h4></center>
+    {% endif %}
+
+    {% if not error %}
+      <center><h5>{{ thanks }}</h5><center>
+    {% endif %}
+
+<h3>Your name:</h3>
+    <input type="text" name="name"><br>
+      <br>
+
+<h3>Your comments:</h3> 
+    <textarea name="comment" rows="15" cols="50"></textarea>
+      <br>
+
+    <input type="submit" value="Submit" size="4">
+    <br>
+    <input type="reset" value="Reset form" size="4">
+  <br>
+  </center>
+</form>
+</div>
+
+
+ <div class="Section">
+  <h3>Comments</h3>
+  <br>
+{% if comments %}
+<ul>
+  {% for text in comments %}
+ <li>
+    <div class="Comments">
+      <h3>
+        <b>{{ text.name }}</b> 
+        said: 
+        "{{ text.comment }}"
+      </h3>
+    </li>
+  {% endfor %}
+ </ul>
+</div>
+  {% endif %}
+</div>
+ </body>
+</html>
